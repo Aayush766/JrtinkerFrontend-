@@ -32,12 +32,13 @@ jobs:
           npm run build # This command creates the 'dist' or 'build' folder
 
       # Step 4: Deploy the built files to Hostinger via SFTP
-      - name: Deploy to Hostinger
-        uses: larystan/sftp-deploy-action@v1
+      - name: Deploy to Hostinger via FTP
+        # --- FIX: The following lines were indented correctly ---
+        uses: SamKirkland/FTP-Deploy-Action@v4.3.4
         with:
           server: ${{ secrets.HOSTINGER_HOST }}
-          port: ${{ secrets.HOSTINGER_PORT }}
           username: ${{ secrets.HOSTINGER_USERNAME }}
           password: ${{ secrets.HOSTINGER_PASSWORD }}
-          path: 'public_html/' # IMPORTANT: Change this to your build folder name if it's not 'dist'
-          target: ${{ secrets.HOSTINGER_TARGET_DIR }}
+          port: ${{ secrets.HOSTINGER_PORT || '22' }} # Uses your secret, or defaults to 22
+          local-dir: ./dist/ # The folder to upload FROM (your build output)
+          server-dir: ${{ secrets.HOSTINGER_TARGET_DIR }} # The folder to upload TO on the server
