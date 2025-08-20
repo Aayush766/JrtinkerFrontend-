@@ -39,5 +39,5 @@ jobs:
           port: ${{ secrets.HOSTINGER_PORT }}
           username: ${{ secrets.HOSTINGER_USERNAME }}
           password: ${{ secrets.HOSTINGER_PASSWORD }}
-          path: 'public_html' # IMPORTANT: Change this to your build folder name if it's not 'dist'
+          path: 'public_html/' # IMPORTANT: Change this to your build folder name if it's not 'dist'
           target: ${{ secrets.HOSTINGER_TARGET_DIR }}
