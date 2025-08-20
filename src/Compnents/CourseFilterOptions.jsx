@@ -4,9 +4,9 @@ import { FaRegClock, FaUserGraduate, FaArrowRightLong } from "react-icons/fa6";
 import { RiPriceTag3Fill } from "react-icons/ri";
 import { MdCalendarViewMonth } from "react-icons/md";
 import { motion } from "framer-motion";
-import { Helmet } from "react-helmet-async"; // Import Helmet
+import { Helmet } from "react-helmet-async"; 
 import { useLanguage } from "../Context/LanguageContext";
-import Loading from "./Loading"; // Ensure this path is correct
+import Loading from "./Loading"; 
 
 const CourseFilterOptions = () => {
   const { t } = useLanguage();
@@ -70,13 +70,13 @@ const CourseFilterOptions = () => {
   };
 
   const getOptimizedImageUrl = (url) => {
-    if (!url || !url.includes('cloudinary.com')) {
+    if (!url || !url.includes("cloudinary.com")) {
       return url;
     }
-    return url.replace('/upload/', '/upload/w_400,q_auto,f_auto/');
+    return url.replace("/upload/", "/upload/w_400,q_auto,f_auto/");
   };
 
-  // Function to generate Schema Markup for SEO
+  // ✅ Schema Markup for SEO with offers + course instance
   const generateSchema = () => {
     if (!filteredCourses || filteredCourses.length === 0) return null;
 
@@ -91,8 +91,27 @@ const CourseFilterOptions = () => {
         provider: {
           "@type": "Organization",
           name: "JRtinker",
+          url: "https://jrtinker.com"
         },
-      },
+        hasCourseInstance: {
+          "@type": "CourseInstance",
+          courseMode: "Online",
+          startDate: "2025-09-01", // replace with dynamic if available
+          endDate: "2025-12-31",   // replace with dynamic if available
+          instructor: {
+            "@type": "Person",
+            name: "JRtinker Instructor"
+          },
+          offers: {
+            "@type": "Offer",
+            url: `https://jrtinker.com/courses/${course.slug}`,
+            price: course.coursePrice || "0",
+            priceCurrency: "INR",
+            availability: "https://schema.org/InStock",
+            validFrom: "2025-08-19"
+          }
+        }
+      }
     }));
 
     return {
@@ -113,7 +132,6 @@ const CourseFilterOptions = () => {
           content="Explore fun and engaging STEM courses for kids. Filter by age group to find the perfect robotics, coding, or science program for your child."
         />
         <link rel="canonical" href="https://jrtinker.com/courses" />
-        {/* Add Structured Data */}
         <script type="application/ld+json">{JSON.stringify(generateSchema())}</script>
       </Helmet>
 
@@ -228,7 +246,7 @@ const CourseFilterOptions = () => {
                           <div className="flex items-center gap-1.5">
                             <RiPriceTag3Fill className="text-sm text-orange-500 flex-shrink-0" />
                             <p className="text-xs font-medium text-gray-700 truncate">
-                              ${course.coursePrice}
+                              ₹{course.coursePrice}
                             </p>
                           </div>
                           <div className="flex items-center gap-1.5">
