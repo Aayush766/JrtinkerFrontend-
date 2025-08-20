@@ -1,0 +1,131 @@
+.remove-arrow::-webkit-inner-spin-button,
+.remove-arrow::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+.remove-arrow {
+  -moz-appearance: textfield;
+}
+
+body {
+  background-color: white;
+}
+li {
+  font-family: "Comic Neue";
+  color: #640d5f;
+}
+
+.single-course-container {
+  height: 100vh;
+  display: grid;
+  padding: 3rem 8rem;
+  grid-template-areas:
+    "a a b b b"
+    "c c b b b"
+    "c c b b b"
+    "d d e e e"
+    "d d e e e";
+  gap: 2rem;
+}
+
+.single-course-a {
+  grid-area: a;
+  background-color: lightblue;
+  max-width: 650px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.single-course-b {
+  grid-area: b;
+  background-color: lightcoral;
+  min-width: 400px;
+  max-width: 600px;
+}
+
+.single-course-c {
+  padding: 1rem;
+  grid-area: c;
+  background-color: #4c7f5d;
+  max-width: 650px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.single-course-d {
+  grid-area: d;
+  background-color: lightyellow;
+  max-width: 650px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.single-course-e {
+  grid-area: e;
+  background-color: lightgray;
+  max-width: 600px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.bg-black {
+  background-color: #000;
+}
+
+.text-gold-500 {
+  color: #ffcc00;
+}
+
+.border-gray-800 {
+  border-color: #2d2d2d;
+}
+.shadow-2xl {
+  box-shadow: 0px 5px 25px rgba(255, 255, 255, 0.1);
+}
+
+.buy-button {
+  background: linear-gradient(135deg, #ffcc00, #ff9900);
+  padding: 12px 24px;
+  border-radius: 50px;
+  font-size: 1.2rem;
+  font-weight: bold;
+  color: black;
+  text-transform: uppercase;
+  transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+  box-shadow: 0px 5px 15px rgba(255, 165, 0, 0.4);
+}
+
+.buy-button:hover {
+  transform: translateY(-3px);
+  box-shadow: 0px 10px 20px rgba(255, 165, 0, 0.6);
+}
+
+.course-component {
+  display: grid;
+  gap: 10px;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  padding: 10px;
+}
+
+.hero-course-img {
+  width: 100%;
+  object-fit: cover;
+  opacity: 0.9;
+}
+
+.course-shadow {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  height: 25%;
+  box-shadow: 0px 0px 40px rgba(0, 0, 0, 0.6);
+}
+
+.gradient-box {
+  background: linear-gradient(135deg, #e74d3c, #ffa500, #ffd700, #ff6347);
+}

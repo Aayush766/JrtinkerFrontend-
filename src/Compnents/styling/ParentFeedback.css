@@ -1,0 +1,9 @@
+.parent-feedback{
+    /* overflow-x: hidden; */
+    overflow: hidden;
+    /* height: 100vh; */
+    /* height: fit-content; */
+}
+.parent-feedback-img{
+    transform: scale(1.17);
+}

@@ -1,0 +1,109 @@
+.project-section-video{
+    border-radius: 28rem;
+    height: 10rem;
+    width: 14rem;
+    object-fit: cover;
+}
+
+
+
+.project-section-border-radius{
+    border-top-left-radius: 5rem;
+    border-top-right-radius: 5rem;
+}
+
+
+.project-container{
+    display: grid;
+    grid-template-areas: 
+    "image-1 . . ."
+    "image-1 . . ."
+    "image-1 . image-2 ."
+    "image-1 .  image-2 ."
+    ". . image-2 ."
+    "image-3 . image-2 ."
+    " image-3 . . ."
+    " image-3 . image-4 ."
+    " image-3 . image-4 ."
+    ". . image-4 ."
+    "image-5 . image-4 ."
+    "image-5 . . ."
+    "image-5 . image-6 ."
+    "image-5 . image-6 ."
+    ". . image-6 ."
+    "image-7 . image-6 ."
+    "image-7 . . ."
+    "image-7 . image-8 ."
+    "image-7 . image-8 ."
+    ". . image-8 ."
+    "image-9 . image-8 ."
+    "image-9 . . ."
+    "image-9 . image-10 ."
+    "image-9 . image-10 ."
+    ". . image-10 ."
+    "image-11 . image-10 ."
+    "image-11 . . ."
+    "image-11 . . ."
+    "image-11 . . ."
+   
+    ;
+    gap: 10px; 
+}
+
+.project-container-images{
+    width: 30rem;
+    /* aspect-ratio: 16/19; */
+   
+    /* overflow: hidden; */
+}
+
+.project-container-images video{
+    border-radius: 3rem;
+}
+
+.image-1{
+    grid-area: image-1;
+    /* background-color: lightcoral; */
+    
+ 
+}
+.image-2{
+    grid-area: image-2;
+    /* background-color: lightblue; */
+}
+.image-3{
+    grid-area: image-3;
+    /* background-color: lightgoldenrodyellow; */
+}
+.image-4{
+    grid-area: image-4;
+    /* background-color: lightgreen; */
+}
+.image-5{
+    grid-area: image-5;
+    /* background-color: lightpink; */
+}
+.image-6{
+    grid-area: image-6;
+    /* background-color: lightsalmon; */
+}
+.image-7{
+    grid-area: image-7;
+    /* background-color: lightseagreen; */
+}
+.image-8{
+    grid-area: image-8;
+    /* background-color: lightslategray; */
+}
+.image-9{
+    grid-area: image-9;
+    /* background-color: lightyellow; */
+}
+.image-10{
+    grid-area: image-10;
+    /* background-color: lightcyan; */
+}
+.image-11{
+    grid-area: image-11;
+    /* background-color: lightgrey; */
+}

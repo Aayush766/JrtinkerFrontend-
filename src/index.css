@@ -1,0 +1,156 @@
+@import "tailwindcss";
+@plugin "daisyui";
+
+/* alegreya for heading/title */
+*{
+  font-family: "salsa", sans-serif;
+  
+   
+}
+html {
+  scroll-behavior: smooth;
+}
+
+p{
+  font-family: "Mulish", sans-serif;
+}
+.alegreya {
+    font-family: "Alegreya", serif;
+    font-optical-sizing: auto;
+    font-weight: weight;
+    font-style: normal;
+  }
+/* montserrat for description/paragraph */
+  .montserrat {
+    font-family: "Montserrat", serif;
+    font-optical-sizing: auto;
+    font-weight:weight;
+    font-style: normal;
+  }
+  
+  .nunito {
+    font-family: "Nunito", serif;
+    font-optical-sizing: auto;
+    font-weight: weight;
+    font-style: normal;
+  }
+
+  .gamaamli {
+    font-family: "Ga Maamli", sans-serif;
+    /* font-weight: 400;
+    font-style: normal; */
+  }
+
+  .roboto{
+    font-family: "Roboto";
+  }
+
+  .poppins{
+    font-family: "Poppins";
+  }
+  .cosmic {
+    font-family: 'Comic Neue', cursive;
+  }
+
+  .fredoka{
+    font-family: "Fredoka"
+   
+    
+  }
+
+  .baloo-bhaina-2 {
+    font-family: "Baloo Bhaina 2";
+   
+  }
+
+  .salsa {
+    font-family: "Salsa", cursive;
+    /* font-weight: 400; */
+    /* font-style: normal; */
+  }
+
+  .mulish {
+    font-family: "Mulish", sans-serif;
+   
+  }
+  
+  .main-heading{
+    font-family: "Mulish",sans-serif;
+    font-weight: 800;
+  }
+
+
+/* latestProgramsSlider.css */
+
+.latest-swiper .swiper-pagination-bullets {
+  display: flex;
+  justify-content: center;
+  gap: 0.5rem;
+  padding-top: 2rem;
+}
+
+.latest-swiper .swiper-pagination-bullet {
+  width: 6%;
+  height: 6px;
+  background-color: #d1d5db; /* Light gray */
+  opacity: 1;
+  border-radius: 9999px;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.latest-swiper .swiper-pagination-bullet-active {
+  background-color: #d73bf6; /* Tailwind blue-500 */
+  transform: scale(1.25);
+}
+
+@media (max-width:450px) {
+  .latest-swiper .swiper-pagination-bullet {
+    width: 6%;
+    height: 6px;
+    
+  }
+}
+
+
+.glassmorphism {
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+.nav-link {
+  position: relative;
+  transition: all 0.3s ease;
+}
+.nav-link:hover::after {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background: #3b82f6;
+  transform: scaleX(1);
+  transform-origin: bottom right;
+}
+.dropdown-menu {
+  transform-origin: top;
+  transition: all 0.3s ease;
+}
+
+@keyframes jump {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  20% {
+    transform: translateY(-8px); 
+  }
+  40% {
+    transform: translateY(0);
+  }
+  60% {
+    transform: translateY(-4px);
+  }
+  80% {
+    transform: translateY(0);
+  }
+}
