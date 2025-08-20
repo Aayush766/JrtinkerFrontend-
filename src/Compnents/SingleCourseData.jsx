@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import { Helmet } from "react-helmet-async"; // Import Helmet
+import { Helmet } from "react-helmet-async";
 import CourseClassDetails from "./CourseClassDetails";
 import Loading from "./Loading"; // Assuming you have a Loading component
 import PageNotFound from "./PageNotFound"; // Assuming you have a 404 component
@@ -49,18 +49,31 @@ const SingleCourseData = () => {
       "@context": "https://schema.org",
       "@type": "Course",
       name: course.courseName,
-      description: course.courseDescription || `Join our ${course.courseName} course for ages ${course.ageGroup?.min}-${course.ageGroup?.max}.`,
+      description:
+        course.courseDescription ||
+        `Join our ${course.courseName} course for ages ${course.ageGroup?.min}-${course.ageGroup?.max}.`,
       provider: {
         "@type": "Organization",
         name: "JRtinker",
-        url: "https://jrtinker.com", // Replace with your actual domain
+        url: "https://jrtinker.com",
       },
-      // You can add more details like reviews if available
-      // "aggregateRating": {
-      //   "@type": "AggregateRating",
-      //   "ratingValue": course.courseRating || "4.5",
-      //   "reviewCount": "250"
-      // }
+      // --- MODIFICATION START ---
+      // 1. Added "offers" to specify price and availability
+      offers: {
+        "@type": "Offer",
+        price: course.coursePrice || "0", // Use course price from your data
+        priceCurrency: "USD", // IMPORTANT: Change to your currency (e.g., "INR")
+        availability: "https://schema.org/InStock",
+      },
+      // 2. Added "hasCourseInstance" to specify how the course is delivered
+      hasCourseInstance: {
+        "@type": "CourseInstance",
+        courseMode: "Online", // Assuming courses are online
+        location: {
+          "@type": "VirtualLocation",
+        },
+      },
+      // --- MODIFICATION END ---
     };
   };
 
@@ -76,22 +89,48 @@ const SingleCourseData = () => {
     <>
       <Helmet>
         {/* --- Primary SEO Tags --- */}
-        <title>{courseData.metaTitle || `${courseData.courseName} | JRtinker`}</title>
-        <meta name="description" content={courseData.metaDescription || courseData.courseDescription} />
-        <link rel="canonical" href={`https://jrtinker.com/courses/${courseData.slug}`} />
+        <title>
+          {courseData.metaTitle || `${courseData.courseName} | JRtinker`}
+        </title>
+        <meta
+          name="description"
+          content={courseData.metaDescription || courseData.courseDescription}
+        />
+        <link
+          rel="canonical"
+          href={`https://jrtinker.com/courses/${courseData.slug}`}
+        />
 
         {/* --- Open Graph / Facebook --- */}
         <meta property="og:type" content="website" />
-        <meta property="og:url" content={`https://jrtinker.com/courses/${courseData.slug}`} />
-        <meta property="og:title" content={courseData.metaTitle || courseData.courseName} />
-        <meta property="og:description" content={courseData.metaDescription || courseData.courseDescription} />
+        <meta
+          property="og:url"
+          content={`https://jrtinker.com/courses/${courseData.slug}`}
+        />
+        <meta
+          property="og:title"
+          content={courseData.metaTitle || courseData.courseName}
+        />
+        <meta
+          property="og:description"
+          content={courseData.metaDescription || courseData.courseDescription}
+        />
         <meta property="og:image" content={courseData.courseImage} />
 
         {/* --- Twitter Card --- */}
         <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:url" content={`https://jrtinker.com/courses/${courseData.slug}`} />
-        <meta name="twitter:title" content={courseData.metaTitle || courseData.courseName} />
-        <meta name="twitter:description" content={courseData.metaDescription || courseData.courseDescription} />
+        <meta
+          name="twitter:url"
+          content={`https://jrtinker.com/courses/${courseData.slug}`}
+        />
+        <meta
+          name="twitter:title"
+          content={courseData.metaTitle || courseData.courseName}
+        />
+        <meta
+          name="twitter:description"
+          content={courseData.metaDescription || courseData.courseDescription}
+        />
         <meta name="twitter:image" content={courseData.courseImage} />
 
         {/* --- Structured Data (Schema Markup) --- */}
@@ -99,7 +138,7 @@ const SingleCourseData = () => {
           {JSON.stringify(generateCourseSchema(courseData))}
         </script>
       </Helmet>
-      
+
       {/* Your existing component that displays the course details */}
       <CourseClassDetails courses={courseData} />
     </>

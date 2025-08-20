@@ -1,0 +1,43 @@
+# Name of your CI/CD workflow
+name: Deploy Website to Hostinger
+
+# Trigger: This workflow runs on every push to the 'main' branch
+on:
+  push:
+    branches:
+      - main
+
+# Jobs: A sequence of tasks to be executed
+jobs:
+  deploy:
+    # The virtual machine the job will run on
+    runs-on: ubuntu-latest
+
+    # The steps that make up the job
+    steps:
+      # Step 1: Check out your repository code
+      - name: Checkout Code
+        uses: actions/checkout@v4
+
+      # Step 2: Set up Node.js environment
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20' # Use the Node.js version your project requires
+
+      # Step 3: Install dependencies and build your website
+      - name: Install and Build
+        run: |
+          npm install
+          npm run build # This command creates the 'dist' or 'build' folder
+
+      # Step 4: Deploy the built files to Hostinger via SFTP
+      - name: Deploy to Hostinger
+        uses: larystan/sftp-deploy-action@v1
+        with:
+          server: ${{ secrets.HOSTINGER_HOST }}
+          port: ${{ secrets.HOSTINGER_PORT }}
+          username: ${{ secrets.HOSTINGER_USERNAME }}
+          password: ${{ secrets.HOSTINGER_PASSWORD }}
+          path: 'public_html' # IMPORTANT: Change this to your build folder name if it's not 'dist'
+          target: ${{ secrets.HOSTINGER_TARGET_DIR }}
