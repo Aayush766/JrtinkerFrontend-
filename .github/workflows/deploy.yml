@@ -19,9 +19,7 @@ jobs:
 
       - name: Install and Build
         run: |
-          npm install
-          # Add execute permission to the vite binary
-          chmod +x ./node_modules/.bin/vite
+          npm ci
           npm run build
 
       - name: Deploy to Hostinger via FTP
